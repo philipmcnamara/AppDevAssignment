@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/phili/Desktop/college/Sem4/Assignment/app/src/main/res/layout/activity_trainer.xml" value="0.1" />
+        <entry key="..\:/Users/phili/Desktop/college/Sem4/Assignment/app/src/main/res/layout/activity_trainer_list.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/phili/Desktop/college/Sem4/Assignment/app/src/main/res/layout/card_trainer.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/phili/Desktop/college/Sem4/Assignment/app/src/main/res/layout/menu_main.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/phili/Desktop/college/Sem4/Assignment/app/src/main/res/menu/menu_main.xml" value="0.2601851851851852" />
+        <entry key="..\:/Users/phili/Desktop/college/Sem4/Assignment/app/src/main/res/menu/menu_plan.xml" value="0.2601851851851852" />
       </map>
     </option>
   </component>

@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">My Assignment</string>
-    <string name="button_addPlacemark">Add Workout Plan</string>
+    <string name="app_name">Workout Plans</string>
+    <string name="button_addPlan">Add Workout Plan</string>
     <string name="hint_trainerTitle">Plan Title</string>
+    <string name="menu_addPlan">Add</string>
+    <string name="menu_cancelPlan">Cancel</string>
 
 </resources>
