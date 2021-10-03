@@ -1,0 +1,38 @@
+package org.wit.myassignment.adapters
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import org.wit.myassignment.databinding.CardTrainerBinding
+import org.wit.myassignment.models.TrainerModel
+
+interface PlanListner {
+    fun onPlanClick(plan: TrainerModel)
+}
+
+class TrainerAdapter constructor(private var plans: List<TrainerModel>,
+                                 private val listener: PlanListner) :
+    RecyclerView.Adapter<TrainerAdapter.MainHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
+        val binding = CardTrainerBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+        return MainHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: MainHolder, position: Int) {
+        val plan = plans[holder.adapterPosition]
+        holder.bind(plan, listener)
+    }
+
+    override fun getItemCount(): Int = plans.size
+
+    class MainHolder(private val binding : CardTrainerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(plan: TrainerModel, listener: PlanListner) {
+            binding.planTitle.text = plan.title
+            binding.root.setOnClickListener { listener.onPlanClick(plan) }
+        }
+    }
+}

@@ -1,3 +1,8 @@
 package org.wit.myassignment.models
 
-data class TrainerModel(var title: String = "")
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class TrainerModel(var id: Long = 0,
+                        var title: String = "") : Parcelable
