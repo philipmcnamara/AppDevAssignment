@@ -4,5 +4,8 @@
     <string name="hint_trainerTitle">Plan Title</string>
     <string name="menu_addPlan">Add</string>
     <string name="menu_cancelPlan">Cancel</string>
+    <string name="button_addRoutine">Add Workout Routine</string>
+    <string name="hint_routineTitle">Routine Title</string>
+
 
 </resources>
