@@ -21,8 +21,8 @@ class RoutineActivity  : AppCompatActivity() {
 
         binding = ActivityPlansBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.toolbarAdd.planRoutine = title
-        setSupportActionBar(binding.toolbarAdd)
+        binding.toolbarAddRoutine.title = title
+        setSupportActionBar(binding.toolbarAddRoutine)
 
         app = application as MainApp
 

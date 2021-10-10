@@ -25,14 +25,14 @@ class RoutineListActivity : AppCompatActivity(), RoutineListner {
         binding = ActivityPlansListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.toolbar.planRoutine = title
-        setSupportActionBar(binding.toolbar)
+        binding.toolbarRoutine.title = title
+        setSupportActionBar(binding.toolbarRoutine)
 
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = RoutineAdapter(app.routines.findAll(),this)
+        binding.recyclerViewRoutine.layoutManager = layoutManager
+        binding.recyclerViewRoutine.adapter = RoutineAdapter(app.routines.findAll(),this)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
