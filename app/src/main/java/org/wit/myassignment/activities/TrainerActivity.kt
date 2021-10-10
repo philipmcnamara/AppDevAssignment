@@ -16,8 +16,10 @@ class TrainerActivity  : AppCompatActivity() {
     var plan = TrainerModel()
     lateinit var app: MainApp
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var PlanEdit = false
         binding = ActivityTrainerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
@@ -25,21 +27,27 @@ class TrainerActivity  : AppCompatActivity() {
         app = application as MainApp
 
         if (intent.hasExtra("Plan_Edit")) {
+            PlanEdit = true
             plan = intent.extras?.getParcelable("Plan_Edit")!!
             binding.planTitle.setText(plan.title)
+            binding.btnAdd.setText(R.string.save_plan)
+
         }
 
         binding.btnAdd.setOnClickListener() {
             plan.title = binding.planTitle.text.toString()
-            if (plan.title.isNotEmpty()) {
-                app.plans.create(plan.copy())
-                setResult(RESULT_OK)
-                finish()
-            }
-            else {
-                Snackbar.make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
+            if (plan.title.isEmpty()) {
+                Snackbar.make(it,R.string.enter_plan_title, Snackbar.LENGTH_LONG)
                     .show()
+            } else {
+                if (PlanEdit) {
+                    app.plans.update(plan.copy())
+                } else {
+                    app.plans.create(plan.copy())
+                }
             }
+            setResult(RESULT_OK)
+            finish()
         }
     }
 

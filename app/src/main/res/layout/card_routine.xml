@@ -13,12 +13,13 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/planTitle"
+            android:id="@+id/planRoutine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
             tools:text="A Title" />
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

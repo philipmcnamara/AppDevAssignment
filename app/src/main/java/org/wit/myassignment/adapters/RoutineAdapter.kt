@@ -3,7 +3,7 @@ package org.wit.myassignment.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.wit.myassignment.databinding.CardTrainerBinding
+import org.wit.myassignment.databinding.CardRoutineBinding
 import org.wit.myassignment.models.exerciseModel
 
 interface RoutineListner {
@@ -15,7 +15,7 @@ class RoutineAdapter constructor(private var routines: List<exerciseModel>,
     RecyclerView.Adapter<RoutineAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        val binding = CardTrainerBinding
+        val binding = CardRoutineBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return MainHolder(binding)
     }
@@ -27,11 +27,11 @@ class RoutineAdapter constructor(private var routines: List<exerciseModel>,
 
     override fun getItemCount(): Int = routines.size
 
-    class MainHolder(private val binding : CardTrainerBinding) :
+    class MainHolder(private val binding : CardRoutineBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(routine: exerciseModel, listener: RoutineListner) {
-            binding.planTitle.text = routine.title
+            binding.planRoutine.text = routine.title
             binding.root.setOnClickListener { listener.onPlanClick(routine) }
         }
     }

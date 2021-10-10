@@ -3,9 +3,14 @@
     <string name="button_addPlan">Add Workout Plan</string>
     <string name="hint_trainerTitle">Plan Title</string>
     <string name="menu_addPlan">Add</string>
+    <string name="menu_addRoutine">Add Routine</string>
     <string name="menu_cancelPlan">Cancel</string>
+    <string name="menu_cancelRoutine">Cancel Routine</string>
     <string name="button_addRoutine">Add Workout Routine</string>
     <string name="hint_routineTitle">Routine Title</string>
-
+    <string name="enter_plan_title"> Please enter a Workout Plan Title </string>
+    <string name="save_plan"> Save Plan </string>
+    <string name="enter_routine_title"> Please enter a Routine Title </string>
+    <string name="save_routine"> Save Routine </string>
 
 </resources>

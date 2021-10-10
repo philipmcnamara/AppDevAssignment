@@ -17,28 +17,38 @@ class RoutineActivity  : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var routineEdit = false
+
         binding = ActivityPlansBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.toolbarAdd.title = title
+        binding.toolbarAdd.planRoutine = title
         setSupportActionBar(binding.toolbarAdd)
+
         app = application as MainApp
 
         if (intent.hasExtra("routine_Edit")) {
+            routineEdit = true
             routine = intent.extras?.getParcelable("routine_Edit")!!
             binding.planRoutine.setText(routine.title)
+            binding.planSet1.setText(routine.Set1)
+            binding.btnAdd.setText(R.string.save_routine)
         }
 
         binding.btnAdd.setOnClickListener() {
             routine.title = binding.planRoutine.text.toString()
-            if (routine.title.isNotEmpty()) {
-                app.routines.create(routine.copy())
-                setResult(RESULT_OK)
-                finish()
-            }
-            else {
-                Snackbar.make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
+            routine.Set1 = binding.planSet1.text.toString()
+            if (routine.title.isEmpty()) {
+                Snackbar.make(it,R.string.enter_routine_title, Snackbar.LENGTH_LONG)
                     .show()
+            } else {
+                if (routineEdit) {
+                    app.routines.update(routine.copy())
+                } else {
+                    app.routines.create(routine.copy())
+                }
             }
+            setResult(RESULT_OK)
+            finish()
         }
     }
 

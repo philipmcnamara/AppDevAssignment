@@ -7,32 +7,32 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.myassignment.R
-import org.wit.myassignment.adapters.PlanListner
-import org.wit.myassignment.adapters.TrainerAdapter
-import org.wit.myassignment.databinding.ActivityPlansBinding
+import org.wit.myassignment.adapters.RoutineAdapter
+import org.wit.myassignment.adapters.RoutineListner
+import org.wit.myassignment.databinding.ActivityPlansListBinding
 import org.wit.myassignment.main.MainApp
-import org.wit.myassignment.models.TrainerModel
+import org.wit.myassignment.models.exerciseModel
 
 
-
-class RoutineListActivity : AppCompatActivity(), PlanListner {
+class RoutineListActivity : AppCompatActivity(), RoutineListner {
 
     lateinit var app: MainApp
-    private lateinit var binding: ActivityPlansBinding
+    private lateinit var binding: ActivityPlansListBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPlansBinding.inflate(layoutInflater)
+        binding = ActivityPlansListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.toolbar.title = title
+
+        binding.toolbar.planRoutine = title
         setSupportActionBar(binding.toolbar)
 
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = TrainerAdapter(app.plans.findAll(),this)
+        binding.recyclerView.adapter = RoutineAdapter(app.routines.findAll(),this)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -42,15 +42,15 @@ class RoutineListActivity : AppCompatActivity(), PlanListner {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_add -> {
-                val launcherIntent = Intent(this, TrainerActivity::class.java)
+                val launcherIntent = Intent(this, RoutineActivity::class.java)
                 startActivityForResult(launcherIntent,0)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onPlanClick(plan: TrainerModel) {
-        val launcherIntent = Intent(this, TrainerActivity::class.java)
+    override fun onPlanClick(plan: exerciseModel) {
+        val launcherIntent = Intent(this, RoutineActivity::class.java)
         launcherIntent.putExtra("plan_edit", plan)
         startActivityForResult(launcherIntent, 0)
     }
