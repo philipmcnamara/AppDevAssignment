@@ -12,6 +12,5 @@ data class TrainerModel(var id: Long = 0,
 data class exerciseModel (
     var id: Long = 0,
     var title: String = "",
-    var Set1: String = "",
-    val Set2: String = ""
+    var Set1: String = ""
     ) : Parcelable

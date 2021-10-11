@@ -9,6 +9,7 @@ import org.wit.myassignment.R
 import org.wit.myassignment.databinding.ActivityPlansBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.exerciseModel
+import timber.log.Timber.i
 
 class RoutineActivity  : AppCompatActivity() {
     private lateinit var binding: ActivityPlansBinding
@@ -38,6 +39,7 @@ class RoutineActivity  : AppCompatActivity() {
             routine.title = binding.planRoutine.text.toString()
             routine.Set1 = binding.planSet1.text.toString()
             if (routine.title.isEmpty()) {
+                i("add Button Pressed: ${routine}")
                 Snackbar.make(it,R.string.enter_routine_title, Snackbar.LENGTH_LONG)
                     .show()
             } else {

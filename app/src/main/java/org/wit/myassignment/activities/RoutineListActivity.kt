@@ -12,6 +12,7 @@ import org.wit.myassignment.adapters.RoutineListner
 import org.wit.myassignment.databinding.ActivityPlansListBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.exerciseModel
+import timber.log.Timber.i
 
 
 class RoutineListActivity : AppCompatActivity(), RoutineListner {
@@ -52,6 +53,7 @@ class RoutineListActivity : AppCompatActivity(), RoutineListner {
     override fun onPlanClick(plan: exerciseModel) {
         val launcherIntent = Intent(this, RoutineActivity::class.java)
         launcherIntent.putExtra("plan_edit", plan)
+        i("Add Button Pressed")
         startActivityForResult(launcherIntent, 0)
     }
 

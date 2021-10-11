@@ -9,6 +9,7 @@ import org.wit.myassignment.R
 import org.wit.myassignment.databinding.ActivityTrainerBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.TrainerModel
+import timber.log.Timber
 
 
 class TrainerActivity  : AppCompatActivity() {
@@ -37,6 +38,7 @@ class TrainerActivity  : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             plan.title = binding.planTitle.text.toString()
             if (plan.title.isEmpty()) {
+                Timber.i("add Button Pressed: ${plan}")
                 Snackbar.make(it,R.string.enter_plan_title, Snackbar.LENGTH_LONG)
                     .show()
             } else {
