@@ -19,6 +19,7 @@ class RoutineActivity  : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var routineEdit = false
+        i("add Button Pressed")
 
         binding = ActivityPlansBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,7 +38,7 @@ class RoutineActivity  : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             routine.title = binding.planRoutine.text.toString()
-            routine.Set1 = binding.planSet1.text.toString()
+            //routine.Set1 = binding.planSet1.text.toString()
             if (routine.title.isEmpty()) {
                 i("add Button Pressed: ${routine}")
                 Snackbar.make(it,R.string.enter_routine_title, Snackbar.LENGTH_LONG)
@@ -45,13 +46,16 @@ class RoutineActivity  : AppCompatActivity() {
             } else {
                 if (routineEdit) {
                     app.routines.update(routine.copy())
+                    i("add Button Pressed: ${routine}")
                 } else {
                     app.routines.create(routine.copy())
+                    i("add Button Pressed: ${routine}")
                 }
             }
             setResult(RESULT_OK)
             finish()
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import org.wit.myassignment.databinding.CardTrainerBinding
 import org.wit.myassignment.models.TrainerModel
 
-interface PlanListner {
+interface PlanListener {
     fun onPlanClick(plan: TrainerModel)
 }
 
 class TrainerAdapter constructor(private var plans: List<TrainerModel>,
-                                 private val listener: PlanListner) :
+                                 private val listener: PlanListener) :
     RecyclerView.Adapter<TrainerAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -30,7 +30,7 @@ class TrainerAdapter constructor(private var plans: List<TrainerModel>,
     class MainHolder(private val binding : CardTrainerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(plan: TrainerModel, listener: PlanListner) {
+        fun bind(plan: TrainerModel, listener: PlanListener) {
             binding.planTitle.text = plan.title
             binding.root.setOnClickListener { listener.onPlanClick(plan) }
         }

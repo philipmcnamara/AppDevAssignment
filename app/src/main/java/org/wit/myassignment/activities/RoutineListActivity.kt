@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.myassignment.R
 import org.wit.myassignment.adapters.RoutineAdapter
-import org.wit.myassignment.adapters.RoutineListner
+import org.wit.myassignment.adapters.RoutineListener
 import org.wit.myassignment.databinding.ActivityPlansListBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.exerciseModel
 import timber.log.Timber.i
 
 
-class RoutineListActivity : AppCompatActivity(), RoutineListner {
+class RoutineListActivity : AppCompatActivity(), RoutineListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityPlansListBinding

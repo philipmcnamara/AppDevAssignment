@@ -59,7 +59,7 @@
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
                     android:autofillHints=""
-                    android:hint="@string/hint_routineTitle"
+                    android:hint="@string/hint_routineSet1"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"

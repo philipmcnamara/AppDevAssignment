@@ -9,12 +9,12 @@ import org.wit.myassignment.main.MainApp
 import android.view.Menu
 import android.view.MenuItem
 import org.wit.myassignment.R
-import org.wit.myassignment.adapters.PlanListner
+import org.wit.myassignment.adapters.PlanListener
 import org.wit.myassignment.adapters.TrainerAdapter
 import org.wit.myassignment.models.TrainerModel
 
 
-class TrainerListActivity : AppCompatActivity(), PlanListner {
+class TrainerListActivity : AppCompatActivity(), PlanListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityTrainerListBinding

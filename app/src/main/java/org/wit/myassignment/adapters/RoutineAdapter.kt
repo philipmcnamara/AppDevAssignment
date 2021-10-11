@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import org.wit.myassignment.databinding.CardRoutineBinding
 import org.wit.myassignment.models.exerciseModel
 
-interface RoutineListner {
+interface RoutineListener {
     fun onPlanClick(plan: exerciseModel)
 }
 
 class RoutineAdapter constructor(private var routines: List<exerciseModel>,
-                                 private val listener: RoutineListner) :
+                                 private val listener: RoutineListener) :
     RecyclerView.Adapter<RoutineAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -30,7 +30,7 @@ class RoutineAdapter constructor(private var routines: List<exerciseModel>,
     class MainHolder(private val binding : CardRoutineBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(routine: exerciseModel, listener: RoutineListner) {
+        fun bind(routine: exerciseModel, listener: RoutineListener) {
             binding.planRoutine.text = routine.title
             binding.root.setOnClickListener { listener.onPlanClick(routine) }
         }
