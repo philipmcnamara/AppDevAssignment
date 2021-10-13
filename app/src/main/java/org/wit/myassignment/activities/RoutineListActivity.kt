@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewbinding.ViewBinding
 import org.wit.myassignment.R
 import org.wit.myassignment.adapters.RoutineAdapter
 import org.wit.myassignment.adapters.RoutineListener
@@ -34,25 +35,26 @@ class RoutineListActivity : AppCompatActivity(), RoutineListener {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerViewRoutine.layoutManager = layoutManager
         binding.recyclerViewRoutine.adapter = RoutineAdapter(app.routines.findAll(),this)
+
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.item_add -> {
+    override fun onOptionsItemSelected(routine: MenuItem): Boolean {
+        when (routine.itemId) {
+            R.id.menu_add -> {
                 val launcherIntent = Intent(this, RoutineActivity::class.java)
                 startActivityForResult(launcherIntent,0)
             }
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(routine)
     }
 
-    override fun onPlanClick(plan: exerciseModel) {
+    override fun onPlanClick(routine: exerciseModel) {
         val launcherIntent = Intent(this, RoutineActivity::class.java)
-        launcherIntent.putExtra("plan_edit", plan)
+        launcherIntent.putExtra("routine_edit", routine)
         i("Add Button Pressed")
         startActivityForResult(launcherIntent, 0)
     }

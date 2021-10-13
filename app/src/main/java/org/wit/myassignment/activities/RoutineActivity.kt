@@ -9,12 +9,13 @@ import org.wit.myassignment.R
 import org.wit.myassignment.databinding.ActivityPlansBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.exerciseModel
+import timber.log.Timber
 import timber.log.Timber.i
 
 class RoutineActivity  : AppCompatActivity() {
     private lateinit var binding: ActivityPlansBinding
     var routine = exerciseModel()
-    lateinit var app: MainApp
+    lateinit var app2: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +27,7 @@ class RoutineActivity  : AppCompatActivity() {
         binding.toolbarAddRoutine.title = title
         setSupportActionBar(binding.toolbarAddRoutine)
 
-        app = application as MainApp
+        app2 = application as MainApp
 
         if (intent.hasExtra("routine_Edit")) {
             routineEdit = true
@@ -45,10 +46,10 @@ class RoutineActivity  : AppCompatActivity() {
                     .show()
             } else {
                 if (routineEdit) {
-                    app.routines.update(routine.copy())
+                    app2.routines.update(routine.copy())
                     i("add Button Pressed: ${routine}")
                 } else {
-                    app.routines.create(routine.copy())
+                    app2.routines.create(routine.copy())
                     i("add Button Pressed: ${routine}")
                 }
             }
@@ -59,17 +60,17 @@ class RoutineActivity  : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_plan, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.item_cancel -> {
-                finish()
+    override fun onOptionsItemSelected(routine: MenuItem): Boolean {
+        when (routine.itemId) {
+            R.id.menu_add -> {
+                Timber.i(" add Routine Button Pressed")
             }
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(routine)
     }
 }
 

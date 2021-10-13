@@ -2,7 +2,7 @@
     <string name="app_name">Workout Plans</string>
     <string name="button_addPlan">Add Workout Plan</string>
     <string name="hint_trainerTitle">Plan Title</string>
-    <string name="menu_addPlan">Add</string>
+    <string name="menu_addPlan">Add Plan</string>
     <string name="menu_addRoutine">Add Routine</string>
     <string name="menu_cancelPlan">Cancel</string>
     <string name="menu_cancelRoutine">Cancel Routine</string>

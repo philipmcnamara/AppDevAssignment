@@ -9,7 +9,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/menu_addRoutine"
+        android:id="@+id/menu_add"
         android:icon="@android:drawable/ic_menu_more"
         android:title="menu_addRoutine"
         app:showAsAction="always" />

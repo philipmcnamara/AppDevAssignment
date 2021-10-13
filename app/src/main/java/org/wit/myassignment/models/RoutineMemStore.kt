@@ -17,7 +17,7 @@ class RoutineMemStore : RoutineStore {
     }
 
     override fun create(routine: exerciseModel){
-        routine.id = getId()
+        routine.id = getRoutineId()
         routines.add(routine)
         logAll()
     }
