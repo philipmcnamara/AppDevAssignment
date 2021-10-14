@@ -45,6 +45,7 @@ class RoutineListActivity : AppCompatActivity(), RoutineListener {
     override fun onOptionsItemSelected(routine: MenuItem): Boolean {
         when (routine.itemId) {
             R.id.menu_add -> {
+                i("Add Button Pressed")
                 val launcherIntent = Intent(this, RoutineActivity::class.java)
                 startActivityForResult(launcherIntent,0)
             }
