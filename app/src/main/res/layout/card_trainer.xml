@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,27 +15,38 @@
 
         <TextView
             android:id="@+id/planTitle"
-            android:layout_width="197dp"
-            android:layout_height="72dp"
+            android:layout_width="188dp"
+            android:layout_height="51dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="-7dp"
             android:textSize="30sp"
             tools:text="A Title" />
 
         <Button
-            android:id="@+id/seeRoutine"
-            android:layout_width="157dp"
+            android:id="@+id/menu_addRoutine"
+            android:layout_width="200dp"
             android:layout_height="80dp"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="65dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/purple_700"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/colorAccent"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:stateListAnimator="@null"
-            android:text="@string/button_seeRoutine"
+            android:text="@string/menu_addRoutine"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            />
+
+        <ImageButton
+            android:id="@+id/btnDeletePlan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="325dp"
+            app:srcCompat="@drawable/ic_action_delete"
+            android:visibility="gone"/>
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

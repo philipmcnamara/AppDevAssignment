@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageButton
 import com.google.android.material.snackbar.Snackbar
 import org.wit.myassignment.R
+import org.wit.myassignment.R.id.item_cancel
 import org.wit.myassignment.databinding.ActivityTrainerBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.TrainerModel
 import timber.log.Timber
+import timber.log.Timber.i
+import timber.log.Timber.log
 
 
 class TrainerActivity  : AppCompatActivity() {
@@ -17,32 +22,46 @@ class TrainerActivity  : AppCompatActivity() {
     var plan = TrainerModel()
     lateinit var app: MainApp
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var PlanEdit = false
+        var edit = false
+
         binding = ActivityTrainerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
         app = application as MainApp
 
+        /////has to be moved into the edit function once it's working//////
+
+            binding.planTitle.setText(plan.title)
+
+            binding.btnDeletePlan.setVisibility(View.VISIBLE)
+
+            binding.btnDeletePlan.setOnClickListener() {
+                app.plans.delete(plan)
+
+                setResult(RESULT_OK)
+                finish()
+            }
+
+
         if (intent.hasExtra("Plan_Edit")) {
-            PlanEdit = true
+            edit = true
             plan = intent.extras?.getParcelable("Plan_Edit")!!
             binding.planTitle.setText(plan.title)
             binding.btnAdd.setText(R.string.save_plan)
-
         }
+
+
 
         binding.btnAdd.setOnClickListener() {
             plan.title = binding.planTitle.text.toString()
             if (plan.title.isEmpty()) {
-                Timber.i("add Button Pressed: ${plan}")
-                Snackbar.make(it,R.string.enter_plan_title, Snackbar.LENGTH_LONG)
+                Snackbar.make(it, R.string.enter_plan_title, Snackbar.LENGTH_LONG)
                     .show()
             } else {
-                if (PlanEdit) {
+                if (edit) {
                     app.plans.update(plan.copy())
                 } else {
                     app.plans.create(plan.copy())
@@ -51,6 +70,8 @@ class TrainerActivity  : AppCompatActivity() {
             setResult(RESULT_OK)
             finish()
         }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -60,10 +81,13 @@ class TrainerActivity  : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_cancel -> {
+            item_cancel -> {
                 finish()
             }
         }
         return super.onOptionsItemSelected(item)
     }
+
 }
+
+

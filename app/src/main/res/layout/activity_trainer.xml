@@ -65,6 +65,16 @@
                     android:text="@string/button_addPlan"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
+
+
+                <ImageButton
+                    android:id="@+id/btnDeletePlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="170dp"
+                    app:srcCompat="@drawable/ic_action_delete"
+                    android:visibility="gone"/>
+
             </LinearLayout>
         </ScrollView>
 

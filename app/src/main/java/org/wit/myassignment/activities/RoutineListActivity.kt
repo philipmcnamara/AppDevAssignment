@@ -48,7 +48,7 @@ class RoutineListActivity : AppCompatActivity(), RoutineListener {
                 val launcherIntent = Intent(this, RoutineActivity::class.java)
                 startActivityForResult(launcherIntent,0)
             }
-            R.id.menu_add -> {
+            R.id.item_add -> {
                 i("Button Clicked")
             }
         }
