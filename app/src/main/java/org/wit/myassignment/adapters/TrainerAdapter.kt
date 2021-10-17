@@ -33,6 +33,7 @@ class TrainerAdapter constructor(private var plans: List<TrainerModel>,
         fun bind(plan: TrainerModel, listener: PlanListener) {
             binding.planTitle.text = plan.title
             binding.root.setOnClickListener { listener.onPlanClick(plan) }
+
         }
     }
 }

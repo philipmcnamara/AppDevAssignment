@@ -31,7 +31,7 @@ class PlanMemStore : PlanStore {
     }
 
     override fun delete(plan: TrainerModel) {
-        var foundPlan: TrainerModel? = plans.find { p -> p.id == plan.id }
+        val foundPlan: TrainerModel? = plans.find { p -> p.id == plan.id }
         if(foundPlan != null){
           delete(foundPlan)
             logAll()

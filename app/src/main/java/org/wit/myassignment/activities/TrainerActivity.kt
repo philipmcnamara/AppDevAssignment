@@ -5,17 +5,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageButton
 import com.google.android.material.snackbar.Snackbar
 import org.wit.myassignment.R
-import org.wit.myassignment.R.id.item_cancel
 import org.wit.myassignment.databinding.ActivityTrainerBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.TrainerModel
-import timber.log.Timber
 import timber.log.Timber.i
-import timber.log.Timber.log
-
+import android.widget.Toast
 
 class TrainerActivity  : AppCompatActivity() {
     private lateinit var binding: ActivityTrainerBinding
@@ -25,6 +21,8 @@ class TrainerActivity  : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var edit = false
+        setContentView(R.layout.activity_trainer)
+
 
         binding = ActivityTrainerBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,14 +44,12 @@ class TrainerActivity  : AppCompatActivity() {
             }
 
 
-        if (intent.hasExtra("Plan_Edit")) {
+        if (intent.hasExtra("plan_edit")) {
             edit = true
-            plan = intent.extras?.getParcelable("Plan_Edit")!!
+            plan = intent.extras?.getParcelable("plan_edit")!!
             binding.planTitle.setText(plan.title)
             binding.btnAdd.setText(R.string.save_plan)
         }
-
-
 
         binding.btnAdd.setOnClickListener() {
             plan.title = binding.planTitle.text.toString()
@@ -67,11 +63,10 @@ class TrainerActivity  : AppCompatActivity() {
                     app.plans.create(plan.copy())
                 }
             }
+            i("add Button Pressed: $plan")
             setResult(RESULT_OK)
             finish()
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -81,9 +76,7 @@ class TrainerActivity  : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            item_cancel -> {
-                finish()
-            }
+            R.id.item_cancel -> { finish() }
         }
         return super.onOptionsItemSelected(item)
     }

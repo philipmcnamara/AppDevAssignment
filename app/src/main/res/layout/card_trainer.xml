@@ -39,14 +39,6 @@
             android:textSize="16sp"
             />
 
-        <ImageButton
-            android:id="@+id/btnDeletePlan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="325dp"
-            app:srcCompat="@drawable/ic_action_delete"
-            android:visibility="gone"/>
-
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
