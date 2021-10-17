@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAssignment">
+
         <activity
             android:name=".activities.TrainerListActivity"
             android:exported="true">
@@ -19,8 +20,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.TrainerActivity"></activity>
+
+        <activity
+            android:name=".activities.RoutineListActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.RoutineActivity">
         </activity>
+
+
+
     </application>
 
 </manifest>

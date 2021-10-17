@@ -12,6 +12,7 @@ import org.wit.myassignment.R
 import org.wit.myassignment.adapters.PlanListener
 import org.wit.myassignment.adapters.TrainerAdapter
 import org.wit.myassignment.models.TrainerModel
+import timber.log.Timber.i
 
 
 class TrainerListActivity : AppCompatActivity(), PlanListener {
@@ -44,6 +45,9 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
                 val launcherIntent = Intent(this, TrainerActivity::class.java)
                 startActivityForResult(launcherIntent,0)
             }
+            R.id.menu_add -> {
+                i("Button Clicked")
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -55,8 +59,3 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
     }
 
 }
-
-
-
-
-

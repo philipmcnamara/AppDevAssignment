@@ -13,5 +13,6 @@
     <string name="save_plan"> Save Plan </string>
     <string name="enter_routine_title"> Please enter a Routine Title </string>
     <string name="save_routine"> Save Routine </string>
+    <string name="button_seeRoutine"> See Routine </string>
 
 </resources>

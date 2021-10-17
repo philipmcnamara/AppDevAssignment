@@ -42,15 +42,17 @@ class RoutineListActivity : AppCompatActivity(), RoutineListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(routine: MenuItem): Boolean {
-        when (routine.itemId) {
-            R.id.menu_add -> {
-                i("Add Button Pressed")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_add -> {
                 val launcherIntent = Intent(this, RoutineActivity::class.java)
                 startActivityForResult(launcherIntent,0)
             }
+            R.id.menu_add -> {
+                i("Button Clicked")
+            }
         }
-        return super.onOptionsItemSelected(routine)
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onPlanClick(routine: exerciseModel) {

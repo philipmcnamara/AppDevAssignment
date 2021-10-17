@@ -9,16 +9,32 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="136dp"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/planTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="197dp"
+            android:layout_height="72dp"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
             tools:text="A Title" />
+
+        <Button
+            android:id="@+id/seeRoutine"
+            android:layout_width="157dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/purple_700"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:stateListAnimator="@null"
+            android:text="@string/button_seeRoutine"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

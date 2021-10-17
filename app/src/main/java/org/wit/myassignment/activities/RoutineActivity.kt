@@ -64,13 +64,22 @@ class RoutineActivity  : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(routine: MenuItem): Boolean {
+   /* override fun onOptionsItemSelected(routine: MenuItem): Boolean {
         when (routine.itemId) {
             R.id.menu_add -> {
                 Timber.i(" add Routine Button Pressed")
             }
         }
         return super.onOptionsItemSelected(routine)
+    } */
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
 
