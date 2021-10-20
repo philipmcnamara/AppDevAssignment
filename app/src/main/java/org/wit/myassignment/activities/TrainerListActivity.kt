@@ -8,6 +8,8 @@ import org.wit.myassignment.databinding.ActivityTrainerListBinding
 import org.wit.myassignment.main.MainApp
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import org.wit.myassignment.R
 import org.wit.myassignment.adapters.PlanListener
 import org.wit.myassignment.adapters.TrainerAdapter
@@ -19,6 +21,7 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityTrainerListBinding
+    private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +35,11 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = TrainerAdapter(app.plans.findAll(),this)
+        //binding.recyclerView.adapter = TrainerAdapter(app.plans.findAll(),this)
+        loadPlans()
+
+        registerRefreshCallback()
+
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -55,11 +62,26 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
     override fun onPlanClick(plan: TrainerModel) {
         val launcherIntent = Intent(this, TrainerActivity::class.java)
         launcherIntent.putExtra("plan_edit", plan)
-        startActivityForResult(launcherIntent, 0)
+        refreshIntentLauncher.launch(launcherIntent)
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         binding.recyclerView.adapter?.notifyDataSetChanged()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loadPlans() {
+        showPlans(app.plans.findAll())
+    }
+
+    fun showPlans (plans: List<TrainerModel>) {
+        binding.recyclerView.adapter = TrainerAdapter(plans, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+    private fun registerRefreshCallback() {
+        refreshIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { loadPlans() }
     }
 
 }
