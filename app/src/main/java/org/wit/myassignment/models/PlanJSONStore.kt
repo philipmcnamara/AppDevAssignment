@@ -10,7 +10,7 @@ import timber.log.Timber.i
 import java.lang.reflect.Type
 import java.util.*
 
-const val JSON_FILE = "placemarks.json"
+const val JSON_FILE = "plans.json"
 val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .registerTypeAdapter(Uri::class.java, UriParser())
     .create()
