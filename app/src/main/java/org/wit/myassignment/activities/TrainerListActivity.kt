@@ -8,6 +8,7 @@ import org.wit.myassignment.databinding.ActivityTrainerListBinding
 import org.wit.myassignment.main.MainApp
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import org.wit.myassignment.R
@@ -35,7 +36,8 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        //binding.recyclerView.adapter = TrainerAdapter(app.plans.findAll(),this)
+
+
         loadPlans()
 
         registerRefreshCallback()

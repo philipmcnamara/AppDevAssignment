@@ -23,25 +23,11 @@ class TrainerActivity  : AppCompatActivity() {
         var edit = false
         setContentView(R.layout.activity_trainer)
 
-
         binding = ActivityTrainerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
         app = application as MainApp
-
-        /////has to be moved into the edit function once it's working//////
-
-            binding.planTitle.setText(plan.title)
-
-            binding.btnDeletePlan.setVisibility(View.VISIBLE)
-
-            binding.btnDeletePlan.setOnClickListener() {
-                app.plans.delete(plan)
-
-                setResult(RESULT_OK)
-                finish()
-            }
 
 
         if (intent.hasExtra("plan_edit")) {
@@ -49,7 +35,16 @@ class TrainerActivity  : AppCompatActivity() {
             plan = intent.extras?.getParcelable("plan_edit")!!
             binding.planTitle.setText(plan.title)
             binding.btnAdd.setText(R.string.save_plan)
+
+            binding.btnDeletePlan.setVisibility(View.VISIBLE)
+            binding.btnDeletePlan.setOnClickListener() {
+                app.plans.delete(plan)
+
+                setResult(RESULT_OK)
+                finish()
+            }
         }
+
 
         binding.btnAdd.setOnClickListener() {
             plan.title = binding.planTitle.text.toString()

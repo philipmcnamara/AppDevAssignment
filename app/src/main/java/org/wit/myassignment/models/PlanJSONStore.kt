@@ -55,11 +55,8 @@ class PlanJSONStore(private val context: Context) : PlanStore {
     }
 
     override fun delete(plan: TrainerModel) {
-        val foundPlan: TrainerModel? = plans.find { p -> p.id == plan.id }
-        if(foundPlan != null){
-            delete(foundPlan)
-            logAll()
-        }
+        plans.remove(plan)
+        serialize()
     }
 
     private fun serialize() {

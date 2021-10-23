@@ -16,5 +16,7 @@
     <string name="save_routine"> Save Routine </string>
     <string name="button_seeRoutine"> See Routine </string>
     <string name="button_deletePlan"> Remove </string>
+    <string name="action_search"> Search </string>
+    <string name="search_hint">Type name…</string>
 
 </resources>
