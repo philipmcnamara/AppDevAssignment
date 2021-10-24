@@ -8,14 +8,16 @@ import org.wit.myassignment.databinding.ActivityTrainerListBinding
 import org.wit.myassignment.main.MainApp
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.SearchView
 import org.wit.myassignment.R
 import org.wit.myassignment.adapters.PlanListener
 import org.wit.myassignment.adapters.TrainerAdapter
+import org.wit.myassignment.models.PlanStore
 import org.wit.myassignment.models.TrainerModel
 import timber.log.Timber.i
+import java.util.*
 
 
 class TrainerListActivity : AppCompatActivity(), PlanListener {
@@ -24,6 +26,46 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
     private lateinit var binding: ActivityTrainerListBinding
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
 
+    val plans = ArrayList<TrainerModel>()
+    var plansList = ArrayList(plans)
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+        menuInflater.inflate(R.menu.menu_main, menu)
+        val item = menu?.findItem(R.id.action_search)
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                plans.clear()
+                val searchText = newText!!.lowercase(Locale.getDefault())
+                if (searchText.isNotEmpty()) {
+                    plansList.forEach{
+                        
+                        if(it.title.lowercase(Locale.getDefault()).contains(searchText)){
+
+                            plans.add(it)
+                        }
+                    }
+                    binding.recyclerView.adapter!!.notifyDataSetChanged()
+
+                } else{
+                    plans.clear()
+                    plans.addAll(plansList)
+                    binding.recyclerView.adapter!!.notifyDataSetChanged()
+                }
+                return false
+            }
+
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +79,10 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
 
-
         loadPlans()
 
         registerRefreshCallback()
 
-    }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -87,3 +124,6 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
     }
 
 }
+
+
+

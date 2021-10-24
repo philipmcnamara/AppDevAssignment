@@ -11,8 +11,10 @@ internal fun getId(): Long {
 class PlanMemStore : PlanStore {
 
     val plans = ArrayList<TrainerModel>()
+    var plansList = ArrayList<TrainerModel>()
 
-    override fun findAll() : List<TrainerModel>{
+    override fun findAll(): MutableList<TrainerModel> {
+        logAll()
         return plans
     }
 
@@ -29,14 +31,7 @@ class PlanMemStore : PlanStore {
             logAll()
         }
     }
-/*
-    override fun delete(plan: TrainerModel) {
-        val foundPlan: TrainerModel? = plans.find { p -> p.id == plan.id }
-        if(foundPlan != null){
-            delete(foundPlan)
-            logAll()
-        }
-    } */
+
     override fun delete(plan: TrainerModel) {
         plans.remove(plan)
         logAll()
@@ -45,5 +40,9 @@ class PlanMemStore : PlanStore {
     fun logAll() {
         plans.forEach{ i("${it}") }
     }
+
+}
+
+private fun <E> ArrayList<E>.add(element: ArrayList<E>) {
 
 }

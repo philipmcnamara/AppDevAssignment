@@ -23,6 +23,7 @@ fun generateRandomId(): Long {
 class PlanJSONStore(private val context: Context) : PlanStore {
 
     var plans = mutableListOf<TrainerModel>()
+    var plansList = mutableListOf(plans)
 
     init {
         if (exists(context, JSON_FILE)) {
