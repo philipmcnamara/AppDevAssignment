@@ -10,7 +10,7 @@ interface PlanListener {
     fun onPlanClick(plan: TrainerModel)
 }
 
-class TrainerAdapter constructor(private var plans: List<TrainerModel>,
+class TrainerAdapter constructor(private var plansList: List<TrainerModel>,
                                  private val listener: PlanListener) :
     RecyclerView.Adapter<TrainerAdapter.MainHolder>() {
 
@@ -21,11 +21,11 @@ class TrainerAdapter constructor(private var plans: List<TrainerModel>,
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val plan = plans[holder.adapterPosition]
+        val plan = plansList[holder.adapterPosition]
         holder.bind(plan, listener)
     }
 
-    override fun getItemCount(): Int = plans.size
+    override fun getItemCount(): Int = plansList.size
 
     class MainHolder(private val binding : CardTrainerBinding) :
         RecyclerView.ViewHolder(binding.root) {
