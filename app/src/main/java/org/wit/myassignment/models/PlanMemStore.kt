@@ -42,7 +42,3 @@ class PlanMemStore : PlanStore {
     }
 
 }
-
-private fun <E> ArrayList<E>.add(element: ArrayList<E>) {
-
-}
