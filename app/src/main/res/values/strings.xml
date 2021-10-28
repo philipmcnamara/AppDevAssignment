@@ -18,6 +18,9 @@
     <string name="button_deletePlan"> Remove </string>
     <string name="action_search"> Search </string>
     <string name="search_hint">Type name…</string>
-    <string name="fittness_trainer">Fittness Trainer</string>
-
+    <string name="fittness_trainer">Fitness Trainer</string>
+    <string name="enter_user_name"> Please enter your User Name </string>
+    <string name="login">Login</string>
+    <string name="register">REGISTER</string>
+    <string name="email">Email</string>
 </resources>

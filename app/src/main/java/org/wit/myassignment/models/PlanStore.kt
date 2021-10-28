@@ -6,3 +6,4 @@ interface PlanStore {
     fun update(plan: TrainerModel)
     fun delete(plan: TrainerModel)
 }
+

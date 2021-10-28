@@ -11,7 +11,6 @@ import org.wit.myassignment.databinding.ActivityTrainerBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.TrainerModel
 import timber.log.Timber.i
-import android.widget.Toast
 
 class TrainerActivity  : AppCompatActivity() {
     private lateinit var binding: ActivityTrainerBinding

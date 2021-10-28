@@ -6,7 +6,6 @@ import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import org.wit.placemark.helpers.*
 import timber.log.Timber
-import timber.log.Timber.i
 import java.lang.reflect.Type
 import java.util.*
 
@@ -75,20 +74,3 @@ class PlanJSONStore(private val context: Context) : PlanStore {
     }
 }
 
-class UriParser : JsonDeserializer<Uri>,JsonSerializer<Uri> {
-    override fun deserialize(
-        json: JsonElement?,
-        typeOfT: Type?,
-        context: JsonDeserializationContext?
-    ): Uri {
-        return Uri.parse(json?.asString)
-    }
-
-    override fun serialize(
-        src: Uri?,
-        typeOfSrc: Type?,
-        context: JsonSerializationContext?
-    ): JsonElement {
-        return JsonPrimitive(src.toString())
-    }
-}

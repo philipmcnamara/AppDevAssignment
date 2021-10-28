@@ -14,3 +14,4 @@ data class exerciseModel (
     var title: String = "",
     var Set1: String = ""
     ) : Parcelable
+
