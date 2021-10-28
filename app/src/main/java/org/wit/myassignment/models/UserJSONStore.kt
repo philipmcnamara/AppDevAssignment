@@ -37,7 +37,7 @@ class UserJSONStore(private val context: Context) : UserStore {
     }
 
     override fun createUser(user: Users) {
-        user.id = generateRandomId()
+        user.id = generateRandomUserId()
         users.add(user)
         serialize()
     }

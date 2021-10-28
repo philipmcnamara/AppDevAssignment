@@ -7,7 +7,7 @@ import timber.log.Timber.i
 
 class MainApp : Application() {
 
-    //lateinit var users: UserStore
+   // lateinit var users: UserStore
     val routines = RoutineMemStore()
     lateinit var plans: PlanStore
     var users = UserMemStore()
@@ -16,7 +16,7 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         plans = PlanJSONStore(applicationContext)
-        //users = UserJSONStore(applicationContext)
+       // users = UserJSONStore(applicationContext)
         //plans = PlanMemStore()
         users = UserMemStore()
         i("Gym Trainer started")

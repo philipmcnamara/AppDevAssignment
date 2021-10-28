@@ -23,4 +23,5 @@
     <string name="login">Login</string>
     <string name="register">REGISTER</string>
     <string name="email">Email</string>
+    <string name="login_error"> Login Failed....you suck </string>
 </resources>

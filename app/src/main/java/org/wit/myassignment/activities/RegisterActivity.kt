@@ -3,10 +3,8 @@ package org.wit.myassignment.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_register.*
 import org.wit.myassignment.R
 import org.wit.myassignment.databinding.ActivityRegisterBinding
-import org.wit.myassignment.databinding.ActivityTrainerListBinding
 import org.wit.myassignment.main.MainApp
 import org.wit.myassignment.models.Users
 import timber.log.Timber
@@ -24,14 +22,15 @@ class RegisterActivity : AppCompatActivity() {
         app = application as MainApp
 
 
-        btnLogRegister.setOnClickListener {
+        binding.btnLogRegister.setOnClickListener {
             onBackPressed()
         }
 
-        RegisterButton.setOnClickListener() {
+        binding.RegisterButton.setOnClickListener() {
             user.name = binding.userName.text.toString()
             user.email = binding.userEmail.text.toString()
-            user.name = binding.userPassword.text.toString()
+            user.password = binding.userPassword.text.toString()
+
             if (user.name.isEmpty()) {
                 Snackbar.make(it, R.string.enter_user_name, Snackbar.LENGTH_LONG)
                     .show()
@@ -39,11 +38,9 @@ class RegisterActivity : AppCompatActivity() {
                 app.users.createUser(user)
             }
         }
-        Timber.i("add Button Pressed: $user")
+
+        Timber.i("register Button Pressed: $user")
         setResult(RESULT_OK)
-        finish()
-
-
     }
 
     override fun onBackPressed() {
