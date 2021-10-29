@@ -25,9 +25,14 @@ class UserMemStore : UserStore {
         }
     }
 
-    override fun delete(plan: Users) {
-        users.remove(plan)
+    override fun delete(user: Users) {
+        users.remove(user)
         logAll()
+    }
+
+    override fun findOne(id: Long): Users? {
+        var foundUser: Users? = users.find { p -> p.id == id }
+        return foundUser
     }
 
     fun logAll() {

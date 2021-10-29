@@ -29,8 +29,6 @@ class TrainerActivity  : AppCompatActivity() {
         setSupportActionBar(binding.toolbarAdd)
         app = application as MainApp
 
-        /////has to be moved into the edit function once it's working//////
-
             binding.planTitle.setText(plan.title)
 
             binding.btnDeletePlan.setVisibility(View.VISIBLE)

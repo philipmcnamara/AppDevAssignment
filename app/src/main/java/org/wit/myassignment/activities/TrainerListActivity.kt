@@ -37,25 +37,22 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
         val searchView = item?.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 
+            //not required as I want the search to work on type not click
             override fun onQueryTextSubmit(query: String?): Boolean {
                 TODO("Not yet implemented")
-                //not required as I want the search to work on type not click
+
             }
-
+            // not working, logic in the fun looks ok, issue is probably in the adapter.
             override fun onQueryTextChange(newText: String?): Boolean {
-
                 plans.clear()
                 val searchText = newText!!.lowercase(Locale.getDefault())
                 if (searchText.isNotEmpty()) {
                     plansList.forEach{
-
                         if(it.title.lowercase(Locale.getDefault()).contains(searchText)){
-
                             plans.add(it)
                         }
                     }
                     binding.recyclerView.adapter!!.notifyDataSetChanged()
-
                 } else{
                     plans.clear()
                     plans.addAll(plansList)
@@ -63,7 +60,6 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
                 }
                 return false
             }
-
         })
         return super.onCreateOptionsMenu(menu)
     }

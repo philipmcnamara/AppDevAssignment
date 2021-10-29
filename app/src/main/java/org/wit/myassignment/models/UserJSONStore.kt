@@ -42,7 +42,7 @@ class UserJSONStore(private val context: Context) : UserStore {
         serialize()
     }
 
-    fun findOne(id: Long): Users? {
+    override fun findOne(id: Long): Users? {
         var foundUser: Users? = users.find { p -> p.id == id }
         return foundUser
     }

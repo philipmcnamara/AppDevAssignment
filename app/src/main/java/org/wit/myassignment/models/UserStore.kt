@@ -5,5 +5,6 @@ interface UserStore {
     fun createUser(user: Users)
     fun update(user: Users)
     fun delete(user: Users)
+    fun findOne(id: Long): Users?
 
 }

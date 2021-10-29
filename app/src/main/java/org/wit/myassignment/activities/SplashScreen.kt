@@ -13,11 +13,13 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        //give the splash image full screen view
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
+        // directs to the main page
         Handler().postDelayed({
             val intent = Intent(this, TrainerListActivity::class.java)
             startActivity(intent)
