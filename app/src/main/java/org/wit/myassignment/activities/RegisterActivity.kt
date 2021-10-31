@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
                 Snackbar.make(it, R.string.enter_user_name, Snackbar.LENGTH_LONG)
                     .show()
             } else {
-                app.users.createUser(user)
+                app.users.createUser(user.copy())
             }
         }
 
