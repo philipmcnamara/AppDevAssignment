@@ -1,10 +1,11 @@
 package org.wit.myassignment.models
 
 interface UserStore {
-    fun findAll(): List<Users>
-    fun createUser(user: Users)
-    fun update(user: Users)
-    fun delete(user: Users)
-    fun findOne(id: Long): Users?
+    fun findAll(): List<UserModel>
+    fun createUser(user: UserModel)
+    fun update(user: UserModel)
+    fun delete(user: UserModel)
+    fun findOne(id: Long): UserModel?
+    fun findByEmail(email: UserModel): UserModel?
 
 }

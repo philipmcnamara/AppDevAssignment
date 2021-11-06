@@ -6,13 +6,13 @@ import com.google.android.material.snackbar.Snackbar
 import org.wit.myassignment.R
 import org.wit.myassignment.databinding.ActivityRegisterBinding
 import org.wit.myassignment.main.MainApp
-import org.wit.myassignment.models.Users
+import org.wit.myassignment.models.UserModel
 import timber.log.Timber
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     lateinit var app: MainApp
-    var user = Users()
+    var user = UserModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +32,10 @@ class RegisterActivity : AppCompatActivity() {
             user.password = binding.userPassword.text.toString()
 
             if (user.name.isEmpty()) {
-                Snackbar.make(it, R.string.enter_user_name, Snackbar.LENGTH_LONG)
-                    .show()
+                Snackbar.make(it, R.string.enter_user_name, Snackbar.LENGTH_LONG).show()
             } else {
                 app.users.createUser(user.copy())
+                onBackPressed()
             }
         }
 

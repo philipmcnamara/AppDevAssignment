@@ -16,6 +16,7 @@ import org.wit.myassignment.adapters.PlanListener
 import org.wit.myassignment.adapters.TrainerAdapter
 import org.wit.myassignment.models.PlanStore
 import org.wit.myassignment.models.TrainerModel
+import timber.log.Timber
 import timber.log.Timber.i
 import java.util.*
 
@@ -26,8 +27,8 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
     private lateinit var binding: ActivityTrainerListBinding
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
 
-    val plans = ArrayList<TrainerModel>()
-    var plansList = ArrayList(plans)
+    //val plans = ArrayList<TrainerModel>()
+    var plansList: ArrayList<TrainerModel> = ArrayList()
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -35,29 +36,32 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
         menuInflater.inflate(R.menu.menu_main, menu)
         val item = menu?.findItem(R.id.action_search)
         val searchView = item?.actionView as SearchView
+        app = application as MainApp
+        var plans = app.plans.findAll()
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 
             //not required as I want the search to work on type not click
             override fun onQueryTextSubmit(query: String?): Boolean {
                 TODO("Not yet implemented")
-
             }
-            // not working, logic in the fun looks ok, issue is probably in the adapter.
+
             override fun onQueryTextChange(newText: String?): Boolean {
-                plans.clear()
+                plansList.clear()
                 val searchText = newText!!.lowercase(Locale.getDefault())
                 if (searchText.isNotEmpty()) {
-                    plansList.forEach{
+                    plans.forEach{
                         if(it.title.lowercase(Locale.getDefault()).contains(searchText)){
-                            plans.add(it)
+                            plansList.add(it)
+                            Timber.i("plansList: $it")
                         }
                     }
                     binding.recyclerView.adapter!!.notifyDataSetChanged()
                 } else{
-                    plans.clear()
-                    plans.addAll(plansList)
+                   // plansList.clear()
+                    plansList.addAll(plans)
                     binding.recyclerView.adapter!!.notifyDataSetChanged()
                 }
+                loadPlansList()
                 return false
             }
         })
@@ -108,7 +112,13 @@ class TrainerListActivity : AppCompatActivity(), PlanListener {
     private fun loadPlans() {
         showPlans(app.plans.findAll())
     }
-
+    private fun loadPlansList() {
+        showPlansList(plansList)
+    }
+    fun showPlansList (plansList: List<TrainerModel>) {
+        binding.recyclerView.adapter = TrainerAdapter(plansList, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
     fun showPlans (plans: List<TrainerModel>) {
         binding.recyclerView.adapter = TrainerAdapter(plans, this)
         binding.recyclerView.adapter?.notifyDataSetChanged()

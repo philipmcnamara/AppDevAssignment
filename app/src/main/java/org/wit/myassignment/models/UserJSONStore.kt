@@ -14,7 +14,7 @@ const val USER_JSON_FILE = "users.json"
 val user_gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .registerTypeAdapter(Uri::class.java, UriParser())
     .create()
-val user_listType: Type = object : TypeToken<ArrayList<Users>>() {}.type
+val user_listType: Type = object : TypeToken<ArrayList<UserModel>>() {}.type
 
 
  fun generateRandomUserId(): Long {
@@ -23,7 +23,7 @@ val user_listType: Type = object : TypeToken<ArrayList<Users>>() {}.type
 
 class UserJSONStore(private val context: Context) : UserStore {
 
-    var users = mutableListOf<Users>()
+    var users = mutableListOf<UserModel>()
 
     init {
         if (exists(context, JSON_FILE)) {
@@ -31,23 +31,27 @@ class UserJSONStore(private val context: Context) : UserStore {
         }
     }
 
-    override fun findAll(): MutableList<Users> {
+    override fun findAll(): MutableList<UserModel> {
         logAll()
         return users
     }
 
-    override fun createUser(user: Users) {
+    override fun createUser(user: UserModel) {
         user.id = generateRandomUserId()
         users.add(user)
         serialize()
     }
 
-    override fun findOne(id: Long): Users? {
-        var foundUser: Users? = users.find { p -> p.id == id }
+    override fun findOne(id: Long): UserModel? {
+        var foundUser: UserModel? = users.find { p -> p.id == id }
         return foundUser
     }
 
-    override fun update(user: Users) {
+    override fun findByEmail(email: UserModel): UserModel? {
+        TODO("Not yet implemented")
+    }
+
+    override fun update(user: UserModel) {
         var foundPlan = findOne(user.id!!)
         if (foundPlan != null) {
             foundPlan.name = user.name
@@ -55,7 +59,7 @@ class UserJSONStore(private val context: Context) : UserStore {
         serialize()
     }
 
-    override fun delete(user: Users) {
+    override fun delete(user: UserModel) {
         users.remove(user)
         serialize()
     }

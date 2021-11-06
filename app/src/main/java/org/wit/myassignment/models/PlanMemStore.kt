@@ -38,7 +38,7 @@ class PlanMemStore : PlanStore {
     }
 
     fun logAll() {
-        plans.forEach{ i("${it}") }
+        plans.forEach{ i("$it") }
     }
 
 }

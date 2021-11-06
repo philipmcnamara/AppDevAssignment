@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Users(var id: Long = 0,
+data class UserModel(var id: Long = 0,
                  var name: String = "",
                  var email: String = "",
                  var password: String = "") : Parcelable
