@@ -21,7 +21,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         app = application as MainApp
 
-
         binding.btnLogRegister.setOnClickListener {
             onBackPressed()
         }
@@ -38,7 +37,6 @@ class RegisterActivity : AppCompatActivity() {
                 onBackPressed()
             }
         }
-
         Timber.i("register Button Pressed: $user")
         setResult(RESULT_OK)
     }
